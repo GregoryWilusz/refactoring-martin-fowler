@@ -1,5 +1,5 @@
-let plays = require('./plays.json');
 let invoice = require('./invoices.json');
+let plays = require('./plays.json');
 
 function statement(invoice, plays) {
   const statementData = {};
