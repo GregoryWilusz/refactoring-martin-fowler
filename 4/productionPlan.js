@@ -13,13 +13,13 @@ class Province {
     this._totalProduction += arg.production;
   }
 
-  get name() {return this._name;}
-  get producers() {return this._producers.slice();}
-  get totalProduction() {return this._totalProduction;}
-  get demand() {return this._demand;}
-  set demand(arg) {this._demand = parseInt(arg);}
-  get price() {return this._price;}
-  set price(arg) {this._price = parseInt(arg);}
+  get name() { return this._name; }
+  get producers() { return this._producers.slice(); }
+  get totalProduction() { return this._totalProduction; }
+  get demand() { return this._demand; }
+  set demand(arg) { this._demand = parseInt(arg); }
+  get price() { return this._price; }
+  set price(arg) { this._price = parseInt(arg); }
 
   get shortfall() {
     return this._demand - this.totalProduction;
@@ -58,11 +58,11 @@ class Producer {
     this._name = data.name;
     this._production = data.production || 0;
   }
-  get name() {return this._name;}
-  get cost() {return this._cost;}
-  set cost(arg) {this._cost = parseInt(arg);}
+  get name() { return this._name; }
+  get cost() { return this._cost; }
+  set cost(arg) { this._cost = parseInt(arg); }
 
-  get production() {return this._production;}
+  get production() { return this._production; }
   set production(amountStr) {
     const amount = parseInt(amountStr);
     const newProduction = Number.isNaN(amount) ? 0 : amount;
@@ -73,12 +73,16 @@ class Producer {
 
 function sampleProvinceData() {
   return {
-    name: "Asia", producers: [
-      {name: "Byzantium", cost: 10, production: 9},
-      {name: "Attalia", cost: 12, production: 10},
-      {name: "Sinope", cost: 10, production: 6}
+    name: "Asia",
+    producers: [
+      { name: "Byzantium", cost: 10, production: 9 },
+      { name: "Attalia", cost: 12, production: 10 },
+      { name: "Sinope", cost: 10, production: 6 }
     ],
     demand: 30,
     price: 20
   };
 }
+
+module.exports.Province = Province;
+module.exports.sampleProvinceData = sampleProvinceData();
