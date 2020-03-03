@@ -1,4 +1,6 @@
 let defaultOwnerData = {firstName: "Martin", lastName: "Fowler"};
 
-export function defaultOwner() { return defaultOwnerData; }
-export function setDefaultOwner(arg) { defaultOwnerData = arg; }
+module.exports = {
+  defaultOwner: function defaultOwner() { return Object.assign({}, defaultOwnerData); },
+  setDefaultOwner: function setDefaultOwner(arg) { defaultOwnerData = arg; }
+};
