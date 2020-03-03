@@ -5,12 +5,14 @@ class NumberRange {
 
   get min() { return this._data.min;}
   get max() { return this._data.max;}
+
+  contains(arg) { return (arg >= this.min && arg <= this.max) }
 }
 
 // function to find the readings that are outside a temperature range.
 function readingsOutsideRange(station, range) {
   return station.readings
-    .filter(r => r.temp < range.min || r.temp > range.max);
+    .filter(r => !range.contains(r.temp));
 }
 
 const station = {
