@@ -8,12 +8,15 @@ const baseCharge = aReading.baseCharge;
 // client 2
 const rawReading = acquireReading();
 const aReading = new Reading(rawReading);
-const taxableCharge = Math.max(0, aReading.baseCharge - taxThreshold(aReading.year));
+const taxableCharge = taxableChargeFn(aReading);
 
 // client 3
 const rawReading = acquireReading();
 const aReading = new Reading(rawReading);
 const basicChargeAmount = aReading.baseCharge;
+
+function taxableChargeFn(aReading) {
+  return Math.max(0, aReading.baseCharge - taxThreshold(aReading.year)); }
 
 class Reading { constructor(data) {
   this._customer = data.customer;
