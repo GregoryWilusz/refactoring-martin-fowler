@@ -1,3 +1,18 @@
+class NumberRange {
+  constructor(min, max) {
+    this._data = { min: min, max: max }
+  }
+
+  get min() { return this._data.min;}
+  get max() { return this._data.max;}
+}
+
+// function to find the readings that are outside a temperature range.
+function readingsOutsideRange(station, min, max, range) {
+  return station.readings
+    .filter(r => r.temp < min || r.temp > max);
+}
+
 const station = {
   name: "ZB1",
   readings: [
@@ -14,25 +29,12 @@ const operatingPlan = {
   temperatureCeiling: '51'
 };
 
-class NumberRange {
-  constructor(min, max) {
-    this._data = { min: min, max: max }
-  }
-
-  get min() { return this._data.min;}
-  get max() { return this._data.max;}
-}
-
-// function to find the readings that are outside a temperature range.
-function readingsOutsideRange(station, min, max, range) {
-  return station.readings
-    .filter(r => r.temp < min || r.temp > max);
-}
+const range = new NumberRange(operatingPlan.temperatureFloor, operatingPlan.temperatureCeiling);
 
 // caller
 alerts = readingsOutsideRange(station,
                               operatingPlan.temperatureFloor,
                               operatingPlan.temperatureCeiling,
-                              null);
+                              range);
 
 console.log(alerts);
