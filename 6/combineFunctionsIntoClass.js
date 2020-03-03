@@ -12,7 +12,7 @@ const taxableCharge = Math.max(0, base - taxThreshold(aReading.year));
 // client 3
 const rawReading = acquireReading();
 const aReading = new Reading(rawReading);
-const basicChargeAmount = aReading.calculateBaseCharge;
+const basicChargeAmount = aReading.baseCharge;
 
 class Reading { constructor(data) {
   this._customer = data.customer;
@@ -25,7 +25,7 @@ class Reading { constructor(data) {
   get month() {return this._month;}
   get year() {return this._year;}
 
-  get calculateBaseCharge() {
+  get baseCharge() {
     return baseRate(this.month, this.year) * this.quantity;
   }
 }
