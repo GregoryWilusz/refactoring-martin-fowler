@@ -8,9 +8,9 @@ class NumberRange {
 }
 
 // function to find the readings that are outside a temperature range.
-function readingsOutsideRange(station, min, range) {
+function readingsOutsideRange(station, range) {
   return station.readings
-    .filter(r => r.temp < min || r.temp > range.max);
+    .filter(r => r.temp < range.min || r.temp > range.max);
 }
 
 const station = {
@@ -33,7 +33,6 @@ const range = new NumberRange(operatingPlan.temperatureFloor, operatingPlan.temp
 
 // caller
 alerts = readingsOutsideRange(station,
-                              operatingPlan.temperatureFloor,
                               range);
 
 console.log(alerts);
