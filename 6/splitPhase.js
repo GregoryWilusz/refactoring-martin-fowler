@@ -9,11 +9,12 @@ function priceOrder(product, quantity, shippingMethod) {
 function applyShipping(basePrice, shippingMethod, quantity, discount) {
   const shippingPerCase = (basePrice > shippingMethod.discountThreshold) ? shippingMethod.discountedFee : shippingMethod.feePerCase;
   const shippingCost = quantity * shippingPerCase;
-  const price = applyShipping(basePrice, shippingMethod, quantity, discount);
+  const priceData = {};
+  const price = applyShipping(priceData, basePrice, shippingMethod, quantity, discount);
   return price;
 }
 
-function applyShipping(basePrice, shippingMethod, quantity, discount) {
+function applyShipping(priceData, basePrice, shippingMethod, quantity, discount) {
   const shippingPerCase = (basePrice > shippingMethod.discountThreshold) ? shippingMethod.discountedFee : shippingMethod.feePerCase;
   const shippingCost = quantity * shippingPerCase;
   const price = basePrice - discount + shippingCost;
