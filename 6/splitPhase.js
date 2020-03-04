@@ -9,14 +9,14 @@ function priceOrder(product, quantity, shippingMethod) {
 function applyShipping(basePrice, shippingMethod, quantity, discount) {
   const shippingPerCase = (basePrice > shippingMethod.discountThreshold) ? shippingMethod.discountedFee : shippingMethod.feePerCase;
   const shippingCost = quantity * shippingPerCase;
-  const priceData = {};
-  const price = applyShipping(priceData, basePrice, shippingMethod, quantity, discount);
+  const priceData = { basePrice: basePrice };
+  const price = applyShipping(priceData, shippingMethod, quantity, discount);
   return price;
 }
 
-function applyShipping(priceData, basePrice, shippingMethod, quantity, discount) {
-  const shippingPerCase = (basePrice > shippingMethod.discountThreshold) ? shippingMethod.discountedFee : shippingMethod.feePerCase;
+function applyShipping(priceData, shippingMethod, quantity, discount) {
+  const shippingPerCase = (priceData.basePrice > shippingMethod.discountThreshold) ? shippingMethod.discountedFee : shippingMethod.feePerCase;
   const shippingCost = quantity * shippingPerCase;
-  const price = basePrice - discount + shippingCost;
+  const price = priceData.basePrice - discount + shippingCost;
   return price;
 }
