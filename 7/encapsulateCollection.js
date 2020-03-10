@@ -15,6 +15,18 @@ class Person {
   set courses(aList) {
     this._courses = aList;
   }
+
+  addCourse(aCourse) {
+    this._courses.push(aCourse);
+  }
+
+  removeCourse(aCourse, fnIfAbsent = () => {
+    throw new RangeError();
+  }) {
+    const index = this._courses.indexOf(aCourse);
+    if (index === -1) fnIfAbsent();
+    else this._courses.splice(index, 1);
+  }
 }
 
 class Course {
@@ -37,5 +49,5 @@ const basicCourseNames = readBasicCourseNames(filename);
 aPerson.courses = basicCourseNames.map(name => new Course(name, false));
 
 for (const name of readBasicCourseNames(filename)) {
-  aPerson.courses.push(new Course(name, false));
+  aPerson.addCourse(new Course(name, false));
 }
