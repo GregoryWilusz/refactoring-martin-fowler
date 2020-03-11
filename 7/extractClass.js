@@ -4,7 +4,7 @@ class Person {
   }
   get name() {return this._name;}
   set name(arg) {this._name = arg;}
-  get telephoneNumber() {return this._telephoneNumber.telephoneNumber;}
+  get telephoneNumber() {return this._telephoneNumber.toString();}
   get officeAreaCode() {return this._telephoneNumber.areaCode;}
   set officeAreaCode(arg) {this._telephoneNumber.areaCode = arg;}
   get officeNumber() {return this._telephoneNumber.number;}
@@ -16,5 +16,5 @@ class TelephoneNumber {
   set areaCode(arg) {this.areaCode = arg;}
   get number() {return this.number;}
   set number(arg) {this.number = arg;}
-  get telephoneNumber() {return `(${this.areaCode}) ${this.number}`;}
+  get toString() {return `(${this.areaCode}) ${this.number}`;}
 }
