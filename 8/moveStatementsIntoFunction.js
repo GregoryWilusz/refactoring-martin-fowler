@@ -2,14 +2,14 @@ function renderPerson(outStream, person) {
   const result = [];
   result.push(`<p>${person.name}</p>`);
   result.push(renderPhoto(person.photo));
-  result.push(zznew(person.photo));
+  result.push(emitPhotoData(person.photo));
   return result.join("\n");
 }
 
-function photoDiv(p) {
+function photoDiv(aPhoto) {
   return [
     "<div>",
-    zznew(p),
+    emitPhotoData(aPhoto),
     "</div>",
   ].join("\n");
 }
@@ -23,9 +23,11 @@ function zznew(p) {
 }
 
 
+
 function emitPhotoData(aPhoto) {
-  const result = [];
-  result.push(`<p>location: ${aPhoto.location}</p>`);
-  result.push(`<p>date: ${aPhoto.date.toDateString()}</p>`);
-  return result.join("\n");
+  return [
+    `<p>title: ${aPhoto.title}</p>`,
+    `<p>location: ${aPhoto.location}</p>`,
+    `<p>date: ${aPhoto.date.toDateString()}</p>`,
+  ].join("\n");
 }
