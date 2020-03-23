@@ -1,11 +1,7 @@
 return `youngestAge: ${youngestAge()}, totalSalary: ${totalSalary()}`;
 
 function totalSalary() {
-  let totalSalary = 0;
-  for (const p of people) {
-    totalSalary += p.salary;
-  }
-  return totalSalary;
+  return people.reduce((total,p) => total + p.salary, 0);
 }
 
 function youngestAge() {
