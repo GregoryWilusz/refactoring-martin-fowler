@@ -10,6 +10,5 @@ class ProductionPlan {
 
   applyAdjustment(anAdjustment) {
     this._adjustments.push(anAdjustment);
-    this._production += anAdjustment.amount;
   }
 }
