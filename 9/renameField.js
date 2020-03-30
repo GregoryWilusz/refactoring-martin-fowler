@@ -21,4 +21,4 @@ class Organization {
   }
 }
 
-const organization = new Organization({ name: "Acme Gooseberries", country: "GB" });
+const organization = new Organization({ title: "Acme Gooseberries", country: "GB" });
