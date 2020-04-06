@@ -19,7 +19,7 @@ class Bird {
     Object.assign(this, birdObject);
   }
   get plumage() {
-    return createBird(bird).plumage;
+    return "unknown";
   }
   get airSpeedVelocity() {
     return createBird(bird).airSpeedVelocity;
