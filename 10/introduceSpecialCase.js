@@ -7,6 +7,7 @@ class Customer {
   get billingPlan() {...}
   set billingPlan(arg) {...}
   get paymentHistory() {...}
+  get isUnknown() {return false;}
 }
 
 //client 1...
