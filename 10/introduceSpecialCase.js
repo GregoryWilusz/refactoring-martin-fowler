@@ -10,6 +10,10 @@ class Customer {
   get isUnknown() {return false;}
 }
 
+class UnknownCustomer {
+  get isUnknown() {return true;}
+}
+
 //client 1...
 const aCustomer = site.customer;
 // ... lots of intervening code ...
