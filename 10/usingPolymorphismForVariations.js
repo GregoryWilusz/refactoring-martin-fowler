@@ -9,7 +9,7 @@ const history = [
 const myRating = rating(voyage, history);
 
 function rating(voyage, history) {
-  return new Rating(voyage, history).value;
+  return createRating(voyage, history).value;
 }
 
 function createRating(voyage, history) {
