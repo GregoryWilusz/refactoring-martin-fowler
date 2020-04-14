@@ -15,6 +15,8 @@ class Customer {
 class UnknownCustomer {
   get isUnknown() {return true;}
   get name() {return "occupant";}
+  get billingPlan() {return registry.billingPlans.basic;}
+  set billingPlan(arg) { /* ignore */ }
 }
 
 
@@ -30,12 +32,10 @@ const aCustomer = site.customer;
 const customerName = aCustomer.name;
 
 //client 2...
-const plan = (isUnknown(aCustomer)) ?
-  registry.billingPlans.basic
-  : aCustomer.billingPlan;
+const plan = aCustomer.billingPlan;
 
 //client 3...
-if (!isUnknown(aCustomer)) aCustomer.billingPlan = newPlan;
+aCustomer.billingPlan = newPlan;
 
 //client 4...
 const weeksDelinquent = isUnknown(aCustomer) ?
