@@ -27,9 +27,7 @@ function isUnknown(arg) {
 //client 1...
 const aCustomer = site.customer;
 // ... lots of intervening code ...
-let customerName;
-if (isUnknown(aCustomer)) customerName = "occupant";
-else customerName = aCustomer.name;
+const customerName = aCustomer.name;
 
 //client 2...
 const plan = (isUnknown(aCustomer)) ?
