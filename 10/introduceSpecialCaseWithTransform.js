@@ -28,32 +28,31 @@ function isUnknown(aCustomer) {
   else return aCustomer.isUnknown;
 }
 
-// client 1
-const rawSite = acquireSiteData();
-const site = enrichSite(rawSite);
-const aCustomer = site.customer;
-// ... lots of intervening code ...
-let customerName;
-if (isUnknown(aCustomer)) customerName = "occupant";
-else customerName = aCustomer.name;
-
 function enrichSite(aSite) {
   const result = _.cloneDeep(aSite);
   const unknownCustomer = {
     isUnknown: true,
+    name: "occupant",
+    billingPlan: registry.billingPlans.basic,
+    paymentHistory: {
+      weeksDelinquentInLastYear: 0
+    }
   };
+
   if (isUnknown(result.customer)) result.customer = unknownCustomer;
   else result.customer.isUnknown = false;
   return result;
 }
 
+// client 1
+const rawSite = acquireSiteData();
+const site = enrichSite(rawSite);
+const aCustomer = site.customer;
+// ... lots of intervening code ...
+const customerName = aCustomer.name;
 
 // client 2
-const plan = (isUnknown(aCustomer)) ?
-  registry.billingPlans.basic
-  : aCustomer.billingPlan;
+const plan = aCustomer.billingPlan;
 
 // client 3
-const weeksDelinquent = (isUnknown(aCustomer)) ?
-  0
-  : aCustomer.paymentHistory.weeksDelinquentInLastYear;
+const weeksDelinquent = aCustomer.paymentHistory.weeksDelinquentInLastYear;
