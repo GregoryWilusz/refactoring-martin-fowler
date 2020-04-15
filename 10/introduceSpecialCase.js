@@ -5,11 +5,11 @@ class Site {
 }
 
 class Customer {
-  get name() {...}
-  get billingPlan() {...}
-  set billingPlan(arg) {...}
-  get paymentHistory() {...}
   get isUnknown() {return false;}
+  get name() { }
+  get billingPlan() { }
+  set billingPlan(arg) { }
+  get paymentHistory() { }
 }
 
 class UnknownCustomer {
@@ -21,7 +21,7 @@ class UnknownCustomer {
 }
 
 class NullPaymentHistory {
-get weeksDelinquentInLastYear() {return 0;}
+  get weeksDelinquentInLastYear() {return 0;}
 }
 
 function isUnknown(arg) {
@@ -32,7 +32,6 @@ function isUnknown(arg) {
 
 //client 1...
 const aCustomer = site.customer;
-// ... lots of intervening code ...
 const customerName = aCustomer.name;
 
 //client 2...
