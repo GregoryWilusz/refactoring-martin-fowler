@@ -16,7 +16,10 @@ function createUnknownCustomer() {
   return {
     isUnknown: true,
     name: 'occupant',
-    billingPlan: registry.billingPlans.basic
+    billingPlan: registry.billingPlans.basic,
+    paymentHistory: {
+      weeksDelinquentInLastYear: 0,
+    }
   };
 }
 
@@ -33,6 +36,4 @@ const customerName = aCustomer.name;
 const plan = aCustomer.billingPlan;
 
 // client 3...
-const weeksDelinquent = (isUnknown(aCustomer)) ?
-  0
-  : aCustomer.paymentHistory.weeksDelinquentInLastYear;
+const weeksDelinquent = aCustomer.paymentHistory.weeksDelinquentInLastYear;
