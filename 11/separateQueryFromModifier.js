@@ -28,4 +28,5 @@ function findMiscreant(people) {
   return "";
 }
 
-const found = alertForMiscreant(people);
+const found = findMiscreant(people);
+alertForMiscreant(people);
