@@ -42,3 +42,6 @@ aCustomer.billingPlan = newPlan;
 
 //client 4...
 const weeksDelinquent = aCustomer.paymentHistory.weeksDelinquentInLastYear;
+
+//client...
+const name = ! isUnknown(aCustomer) ? aCustomer.name : "unknown occupant";
