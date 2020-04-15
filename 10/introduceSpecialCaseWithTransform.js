@@ -23,13 +23,17 @@
 //   customer: "unknown"
 // }
 
+function isUnknown(aCustomer) {
+  return aCustomer === "unknown";
+}
+
 // client 1
 const rawSite = acquireSiteData();
 const site = enrichSite(rawSite);
 const aCustomer = site.customer;
 // ... lots of intervening code ...
 let customerName;
-if (aCustomer === "unknown") customerName = "occupant";
+if (isUnknown(aCustomer)) customerName = "occupant";
 else customerName = aCustomer.name;
 
 function enrichSite(inputSite) {
@@ -38,11 +42,11 @@ function enrichSite(inputSite) {
 
 
 // client 2
-const plan = (aCustomer === "unknown") ?
+const plan = (isUnknown(aCustomer)) ?
   registry.billingPlans.basic
   : aCustomer.billingPlan;
 
 // client 3
-const weeksDelinquent = (aCustomer === "unknown") ?
+const weeksDelinquent = (isUnknown(aCustomer)) ?
   0
   : aCustomer.paymentHistory.weeksDelinquentInLastYear;
