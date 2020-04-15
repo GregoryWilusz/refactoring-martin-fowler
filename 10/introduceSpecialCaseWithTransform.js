@@ -24,19 +24,25 @@
 // }
 
 // client 1
-  const site = acquireSiteData();
-  const aCustomer = site.customer;
-  // ... lots of intervening code ...
-  let customerName;
-  if (aCustomer === "unknown") customerName = "occupant";
-  else customerName = aCustomer.name;
+const rawSite = acquireSiteData();
+const site = enrichSite(rawSite);
+const aCustomer = site.customer;
+// ... lots of intervening code ...
+let customerName;
+if (aCustomer === "unknown") customerName = "occupant";
+else customerName = aCustomer.name;
+
+function enrichSite(inputSite) {
+  return _.cloneDeep(inputSite);
+}
+
 
 // client 2
-  const plan = (aCustomer === "unknown") ?
+const plan = (aCustomer === "unknown") ?
   registry.billingPlans.basic
   : aCustomer.billingPlan;
 
 // client 3
-  const weeksDelinquent = (aCustomer === "unknown") ?
+const weeksDelinquent = (aCustomer === "unknown") ?
   0
   : aCustomer.paymentHistory.weeksDelinquentInLastYear;
