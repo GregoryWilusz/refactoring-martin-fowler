@@ -3,10 +3,17 @@ class Site {
 }
 
 class Customer {
+  get isUnknown() {return false;}
   get name() {}
   get billingPlan() {}
   set billingPlan(arg) {}
   get paymentHistory() {}
+}
+
+function createUnknownCustomer() {
+  return {
+    isUnknown: true,
+  };
 }
 
 //client 1...
