@@ -3,17 +3,7 @@
 // It only does this for the first miscreant it finds.
 
 function alertForMiscreant(people) {
-  for (const p of people) {
-    if (p === "Don") {
-      setOffAlarms();
-      return;
-    }
-    if (p === "John") {
-      setOffAlarms();
-      return;
-    }
-  }
-  return;
+  if (findMiscreant(people) !== "") setOffAlarms();
 }
 
 function findMiscreant(people) {
