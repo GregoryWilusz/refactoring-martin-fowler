@@ -1,3 +1,7 @@
+function createEmployee(name, typeCode) {
+  return new Employee(name, typeCode);
+}
+
 class Employee {
   constructor(name, typeCode) {
     this._name = name;
