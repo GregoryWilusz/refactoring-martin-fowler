@@ -17,5 +17,5 @@ class Employee {
 }
 
 // callers
-const candidate = new Employee(document.name, document.empType);
-const leadEngineer = new Employee(document.leadEngineer, 'E');
+const candidate = createEmployee(document.name, document.empType);
+const leadEngineer = createEmployee(document.leadEngineer, 'E');
