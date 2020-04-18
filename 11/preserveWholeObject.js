@@ -2,8 +2,6 @@
 // daily temperature range with a range in a predefined heating plan.
 
 // caller...
-const low = aRoom.daysTempRange.low;
-const high = aRoom.daysTempRange.high;
 if (!aPlan.aPlan.xxNEWwithinRange(aRoom.daysTempRange))
   alerts.push("room temperature went outside range");
 
