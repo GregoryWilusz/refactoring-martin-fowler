@@ -10,7 +10,11 @@ class Manager extends Employee {
   constructor(name, grade) {
     super(name);
     this._grade = grade;
-    if (this.isPrivileged) this.assignCar(); // every subclass does this
+    this.finishConstruction();
+  }
+
+  finishConstruction() {
+    if (this.isPrivileged) this.assignCar();
   }
 
   get isPrivileged() {
