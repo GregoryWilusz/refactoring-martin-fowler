@@ -3,6 +3,14 @@
 // Another reason to not use direct inheritance is keeping the ability to change
 // the type of employee.
 
+class EmployeeType {
+  constructor(aString) {
+    this._value = aString;
+  }
+  toString() {return this._value;}
+}
+
+
 class Employee {
   constructor(name, type) {
     this.validateType(type);
@@ -13,10 +21,13 @@ class Employee {
     if (!["engineer", "manager", "salesman"].includes(arg))
       throw new Error(`Employee cannot be of type ${arg}`);
   }
+  get typeString() {return this._type.toString();}
   get type() {return this._type;}
   set type(arg) {this._type = arg;}
+
   get capitalizedType() {
-    return this._type.charAt(0).toUpperCase() + this._type.substr(1).toLowerCase();
+    return this.typeString.charAt(0).toUpperCase()
+      + this.typeString.substr(1).toLowerCase();
   }
   toString() {
     return `${this._name} (${this.capitalizedType})`;
