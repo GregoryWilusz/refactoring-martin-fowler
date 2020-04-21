@@ -4,6 +4,10 @@
 // the type of employee.
 
 class EmployeeType {
+  get capitalizedName() {
+    return this.toString().charAt(0).toUpperCase()
+      + this.toString().substr(1).toLowerCase();
+  }
 }
 
 class Engineer extends EmployeeType {
