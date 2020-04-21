@@ -1,5 +1,5 @@
 class Employee {
-  constructor(name, type) {
+  constructor(name) {
     this._name = name;
   }
   validateType(arg) {
@@ -24,11 +24,11 @@ class Manager extends Employee {
 function createEmployee(name, type) {
   switch (type) {
     case "engineer":
-      return new Engineer(name, type);
+      return new Engineer(name);
     case "salesman":
-      return new Salesman(name, type);
+      return new Salesman(name);
     case "manager":
-      return new Manager(name, type);
+      return new Manager(name);
     default:
       throw new Error(`Employee cannot be of type ${type}`);
   }
