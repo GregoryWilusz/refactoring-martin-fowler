@@ -4,6 +4,7 @@ class Person {
   }
   get name() {return this._name;}
   get genderCode() {return "X";}
+  get isMale() {return this instanceof Male;}
   // snip
 }
 
@@ -28,6 +29,6 @@ function createPerson(aRecord) {
 }
 
 // client...
-const numberOfMales = people.filter(p => isMale(p)).length;
+const numberOfMales = people.filter(p => p.isMale).length;
 
 function isMale(aPerson) {return aPerson instanceof Male;}
