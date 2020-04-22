@@ -16,11 +16,10 @@ function createPerson(aRecord) {
   switch (aRecord.gender) {
     case 'M': return new Person(aRecord.name, 'M');
     case 'F': return new Person(aRecord.name, 'F');
-    default:  return new Person(aRecord.name);
+    default:  return new Person(aRecord.name, 'X');
   }
 }
 
 // client...
 const numberOfMales = people.filter(p => p.isMale).length;
 
-function isMale(aPerson) {return aPerson instanceof Male;}
