@@ -21,11 +21,13 @@ function loadFromInput(data) {
 
 function createPerson(aRecord) {
   switch (aRecord.gender) {
-    case 'M': return new Male   (aRecord.name);
-    case 'F': return new Female (aRecord.name);
-    default:  return new Person (aRecord.name);
+    case 'M': return new Male  (aRecord.name);
+    case 'F': return new Female(aRecord.name);
+    default:  return new Person(aRecord.name);
   }
 }
 
 // client...
-const numberOfMales = people.filter(p => p instanceof Male).length;
+const numberOfMales = people.filter(p => isMale(p)).length;
+
+function isMale(aPerson) {return aPerson instanceof Male;}
