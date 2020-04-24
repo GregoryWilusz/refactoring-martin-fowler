@@ -25,15 +25,17 @@ class Department extends Party {
     this._staff = staff;
   }
   get staff() {return this._staff.slice();}
-  get totalMonthlyCost() {
-    return this.staff
-      .map(e => e.monthlyCost)
-      .reduce((sum, cost) => sum + cost);
-  }
+
   get headCount() {
     return this.staff.length;
   }
-  get totalAnnualCost() {
-    return this.totalMonthlyCost * 12;
+  get annualCost() {
+    return this.monthlyCost * 12;
+  }
+
+  get monthlyCost() {
+    return this.staff
+      .map(e => e.monthlyCost)
+      .reduce((sum, cost) => sum + cost);
   }
 }
