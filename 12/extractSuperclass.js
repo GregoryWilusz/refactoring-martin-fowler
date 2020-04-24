@@ -1,8 +1,8 @@
-// I'm pondering these two classes, they share some common functionality —
-// their name and the notions of annual and monthly costs
+class Party {}
 
-class Employee {
+class Employee extends Party {
   constructor(name, id, monthlyCost) {
+    super();
     this._id = id;
     this._name = name;
     this._monthlyCost = monthlyCost;
@@ -15,8 +15,9 @@ class Employee {
   }
 }
 
-class Department {
+class Department extends Party {
   constructor(name, staff) {
+    super();
     this._name = name;
     this._staff = staff;
   }
