@@ -4,7 +4,6 @@ class Booking {
     this._date = date;
   }
 
-  // Regular bookings offer a talkback after the show, but only on nonpeak days.
   get hasTalkback() {
     return this._show.hasOwnProperty('talkback') && !this.isPeakDay;
   }
@@ -26,19 +25,14 @@ class PremiumBooking extends Booking {
     this._extras = extras;
   }
 
-  // Premium bookings override this to offer talkbacks on all days.
   get hasTalkback() {
     return this._show.hasOwnProperty('talkback');
   }
 
-  //Determining the price is a similar override,
-  // with a twist that the premium method calls the superclass method.
   get basePrice() {
     return Math.round(super.basePrice + this._extras.premiumFee);
   }
 
-  //The last example is where the premium booking offers
-  // a behavior that isn’t present on the superclass.
   get hasDinner() {
     return this._extras.hasOwnProperty('dinner') && !this.isPeakDay;
   }
