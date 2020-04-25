@@ -24,6 +24,8 @@ class Bird {
     switch (data.type) {
       case 'EuropeanSwallow':
         return new EuropeanSwallowDelegate();
+      case 'AfricanSwallow':
+        return new AfricanSwallowDelegate(data);
       default:
         return null;
     }
@@ -61,3 +63,11 @@ class NorwegianBlueParrot extends Bird {
 class EuropeanSwallowDelegate {
   get airSpeedVelocity() {return 35;}
 }
+
+
+class AfricanSwallowDelegate {
+  constructor(data) {
+    this._numberOfCoconuts = data.numberOfCoconuts;
+  }
+}
+
