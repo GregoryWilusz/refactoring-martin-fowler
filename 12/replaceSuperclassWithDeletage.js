@@ -16,9 +16,8 @@ class CatalogItem {
 // One of the things that scrolls need is regular cleaning.
 // The code for that uses the catalog item and extends it with the data it needs for cleaning.
 
-class Scroll extends CatalogItem {
+class Scroll {
   constructor(id, title, tags, dateLastCleaned) {
-    super(id, title, tags);
     this._catalogItem = new CatalogItem(id, title, tags);
     this._lastCleaned = dateLastCleaned;
   }
