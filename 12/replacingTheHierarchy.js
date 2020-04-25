@@ -13,10 +13,6 @@ class Bird {
     this._plumage = data.plumage;
     this._speciesDelegate = this.selectSpeciesDelegate(data);
   }
-  get name() {return this._name;}
-  get plumage() {
-    return this._plumage || "average";
-  }
 
   selectSpeciesDelegate(data) {
     switch (data.type) {
@@ -27,13 +23,13 @@ class Bird {
       case 'NorwegianBlueParrot':
         return new NorwegianBlueParrotDelegate(data, this);
       default:
-        return null;
+        return new SpeciesDelegate(data, this);
     }
   }
 
-  get airSpeedVelocity() {
-    this._speciesDelegate ? this._speciesDelegate.airSpeedVelocity : null;
-  }
+  get name() {return this._name;}
+  get plumage() {return this._speciesDelegate.plumage;}
+  get airSpeedVelocity() {return this._speciesDelegate.airSpeedVelocity;}
 }
 
 class NorwegianBlueParrot extends Bird {
@@ -59,6 +55,8 @@ class SpeciesDelegate {
   get plumage() {
     return this._bird._plumage || "average";
   }
+
+  get airSpeedVelocity() {return null;}
 }
 
 class EuropeanSwallowDelegate extends SpeciesDelegate {
