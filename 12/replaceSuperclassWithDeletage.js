@@ -17,7 +17,7 @@ class CatalogItem {
 // The code for that uses the catalog item and extends it with the data it needs for cleaning.
 
 class Scroll {
-  constructor(id, title, tags, dateLastCleaned) {
+  constructor(id, title, tags, dateLastCleaned, catalogID, catalog) {
     this._id = id;
     this._catalogItem = new CatalogItem(id, title, tags);
     this._lastCleaned = dateLastCleaned;
@@ -42,4 +42,6 @@ const scrolls = aDocument
   .map(record => new Scroll(record.id,
                             record.catalogData.title,
                             record.catalogData.tags,
-                            LocalDate.parse(record.lastCleaned)));
+                            LocalDate.parse(record.lastCleaned),
+                            record.catalogData.id,
+                            catalog));
