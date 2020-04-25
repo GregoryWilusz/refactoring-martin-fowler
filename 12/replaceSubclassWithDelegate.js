@@ -11,7 +11,8 @@ class Booking {
 
   get basePrice() {
     let result = this._show.price;
-    if (this.isPeakDay) result += Math.round(result * 0.15); return result;
+    if (this.isPeakDay) result += Math.round(result * 0.15);
+    return result;
   }
 }
 
@@ -23,7 +24,7 @@ class PremiumBooking extends Booking {
 
   // Premium bookings override this to offer talkbacks on all days.
   get hasTalkback() {
-  return this._show.hasOwnProperty('talkback');
+    return this._show.hasOwnProperty('talkback');
   }
 
   //Determining the price is a similar override,
@@ -39,7 +40,15 @@ class PremiumBooking extends Booking {
   }
 }
 
+function createBooking(show, date) {
+  return new Booking(show, date);
+}
+
+function createPremiumBooking(show, date, extras) {
+  return new PremiumBooking(show, date, extras);
+}
+
 // booking client
-aBooking = new Booking(show,date);
+aBooking = createBooking(show, date);
 // premium client
-aBooking = new PremiumBooking(show, date, extras);
+aBooking = createPremiumBooking(show, date, extras);
