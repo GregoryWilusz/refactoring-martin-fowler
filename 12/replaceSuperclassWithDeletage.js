@@ -18,12 +18,13 @@ class CatalogItem {
 
 class Scroll {
   constructor(id, title, tags, dateLastCleaned) {
+    this._id = id;
     this._catalogItem = new CatalogItem(id, title, tags);
     this._lastCleaned = dateLastCleaned;
   }
 
 
-  get id() {return this._catalogItem.id;}
+  get id() {return this._id;}
   get title() {return this._catalogItem.title;}
   hasTag(aString) {return this._catalogItem.hasTag(aString);}
 
