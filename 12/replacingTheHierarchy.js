@@ -1,10 +1,5 @@
 function createBird(data) {
-  switch (data.type) {
-    case 'NorwegianBlueParrot':
-      return new NorwegianBlueParrot(data);
-    default:
-      return new Bird(data);
-  }
+  return new Bird(data);
 }
 
 class Bird {
@@ -14,37 +9,21 @@ class Bird {
     this._speciesDelegate = this.selectSpeciesDelegate(data);
   }
 
+  get name() {return this._name;}
+  get plumage() {return this._speciesDelegate.plumage;}
+  get airSpeedVelocity() {return this._speciesDelegate.airSpeedVelocity;}
+
   selectSpeciesDelegate(data) {
     switch (data.type) {
       case 'EuropeanSwallow':
-        return new EuropeanSwallowDelegate();
+        return new EuropeanSwallowDelegate(data, this);
       case 'AfricanSwallow':
-        return new AfricanSwallowDelegate(data);
+        return new AfricanSwallowDelegate(data, this);
       case 'NorwegianBlueParrot':
         return new NorwegianBlueParrotDelegate(data, this);
       default:
         return new SpeciesDelegate(data, this);
     }
-  }
-
-  get name() {return this._name;}
-  get plumage() {return this._speciesDelegate.plumage;}
-  get airSpeedVelocity() {return this._speciesDelegate.airSpeedVelocity;}
-}
-
-class NorwegianBlueParrot extends Bird {
-  constructor(data) {
-    super(data);
-    this._voltage = data.voltage;
-    this._isNailed = data.isNailed;
-  }
-
-  get plumage() {
-    return this._speciesDelegate.plumage;
-  }
-
-  get airSpeedVelocity() {
-    return (this._isNailed) ? 0 : 10 + this._voltage / 10;
   }
 }
 
@@ -62,7 +41,6 @@ class SpeciesDelegate {
 class EuropeanSwallowDelegate extends SpeciesDelegate {
   get airSpeedVelocity() {return 35;}
 }
-
 
 class AfricanSwallowDelegate extends SpeciesDelegate {
   constructor(data) {
